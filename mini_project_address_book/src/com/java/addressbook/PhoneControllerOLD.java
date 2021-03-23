@@ -2,24 +2,24 @@ package com.java.addressbook;
 
 import java.util.List;
 
-public class PhoneController {
+public class PhoneControllerOLD {
 
-	private PhoneBookView phoneView;
-	private PhoneBookDAO phoneDao;
+	private PhoeneView phoneView;
+	private PhoneRepository phoneRepo;
 	
-	public PhoneController() {
+	public PhoneControllerOLD() {
 		super();
 	}
 	
-	public void execute(){
-		phoneView = new PhoneBookView();
-		phoneDao = new PhoneBookDAOImpl();
+	public void excute(){
+		phoneView = new PhoeneView();
+		phoneRepo = new PhoneRepository();
 		
 		boolean run = true;
 		int menuNum ;
-		int deleteId;
 		List<PhoneBookVO> phoneList;
 		PhoneBookVO phoneVO;
+		int delNo;
 		String keyword;
 		
 		phoneView.showInit();
@@ -29,27 +29,26 @@ public class PhoneController {
 			
 			switch(menuNum){
 				case 1:
-					phoneList = phoneDao.getList();
+					phoneList = phoneRepo.getList();
 					phoneView.showList(phoneList);
 					break;
 			
 				case 2:
 					phoneVO = phoneView.showAdd();
-					phoneDao.addPhone(phoneVO);
+					phoneRepo.addInfo(phoneVO);
 					phoneView.showAddResult();
 					break;
 					
 				case 3:
-					deleteId = phoneView.showDelete();
-					phoneDao.deletePhone(deleteId);
+					delNo = phoneView.showDel();
+					phoneRepo.delInfo(delNo);
 					phoneView.showDelResult();
 					break;
 					
 				case 4:	
 					keyword = phoneView.showSearch();
-					phoneList = phoneDao.getSearch(keyword);
-					phoneView.showSearchResult(phoneList);
-					//phoneView.showSearchResult(phoneList, keyword);
+					phoneList = phoneRepo.getList();
+					phoneView.showSearchResult(phoneList, keyword);
 					break;
 					
 				case 5:

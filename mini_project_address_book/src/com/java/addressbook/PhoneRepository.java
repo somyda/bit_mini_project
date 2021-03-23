@@ -14,10 +14,10 @@ public class PhoneRepository {
 	String phoneDB = "C:\\workspace\\somy_bit_edu\\bin\\AddressBook\\phoneDB.txt";
 
     //	phoneDB.txt 파일을 읽어 모든 전화번호(리스트)를 전달하는 메소드
-	public List<PhoneVO> getList(){
+	public List<PhoneBookVO> getList(){
 		
 	    //	전화번호들 관리를 위한 리스트
-		List<PhoneVO> list = new ArrayList<PhoneVO>();
+		List<PhoneBookVO> list = new ArrayList<PhoneBookVO>();
 		
 		try {
 			//Reader fr = new FileReader("phoneDB.txt");
@@ -25,7 +25,7 @@ public class PhoneRepository {
 			BufferedReader br = new BufferedReader(fr);
 			
 			while(true){
-				PhoneVO phoneVO = new PhoneVO();
+				PhoneBookVO phoneVO = new PhoneBookVO();
 				String line;
 				
 				line = br.readLine();
@@ -57,10 +57,10 @@ public class PhoneRepository {
 	}
 
 	//	phoneDB.txt 에 모든 전화번호 리스트를 저장하는 메소드
-	private void saveInfo(List<PhoneVO> list){
+	private void saveInfo(List<PhoneBookVO> list){
 		
 		try {
-			//	Writer fr = new FileWriter("phoneDB.txt");
+			//Writer fr = new FileWriter("phoneDB.txt");
 			Writer fr = new FileWriter(phoneDB);
 			BufferedWriter bw = new BufferedWriter(fr);
 			
@@ -80,15 +80,15 @@ public class PhoneRepository {
 	}
 	
 	//	기존데이터에 새로입력받은 데이터를 추가하여 모두저장하는 메소드 
-	public void addInfo(PhoneVO phoneVO) {
-		List<PhoneVO> list=getList();
+	public void addInfo(PhoneBookVO phoneVO) {
+		List<PhoneBookVO> list=getList();
 		list.add(phoneVO);
 		saveInfo(list);
 	}
 
 	//	선택한 번호의 데이터를 삭제하고 저장하는 메소드(모두 다시저장)
 	public void delInfo(int num) {
-		List<PhoneVO> list=getList();
+		List<PhoneBookVO> list=getList();
 		list.remove(num-1);
 		saveInfo(list);
 	}

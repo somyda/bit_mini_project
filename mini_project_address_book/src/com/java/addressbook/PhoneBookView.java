@@ -5,12 +5,12 @@ import java.util.Scanner;
 
 //	화면과 관련된 기능을 담당합니다.
 
-public class PhoeneView {
+public class PhoneBookView {
 	
 	private Scanner sc;
 	
 	//	생성자: 입력을 위하여 스캐너를 생성합니다.
-	public PhoeneView() {
+	public PhoneBookView() {
 		this.sc = new Scanner(System.in);
 	}
 
@@ -84,16 +84,16 @@ public class PhoeneView {
 	}
 	
 	//	3.삭제 : 삭제를 위한 화면을 출력하고 사용자가 선택한 번호를 입력받아 전달하는 메소드 
-	public int showDel(){
+	public int showDelete(){
 		System.out.println("");
 		System.out.println("<3.삭제>");
 		
 		System.out.print(">번호: ");
-		int delNo = sc.nextInt();
+		int delId = sc.nextInt();
 		sc.nextLine();
 		System.out.print("");
 		
-		return delNo;
+		return delId;
 	}
 	
 	//	삭제완료시 결과 출력 메소드
@@ -115,6 +115,7 @@ public class PhoeneView {
 	}
 	
 	//	검색결과를 가져와 화면에 출력하는 메소드
+	/*
 	public void showSearchResult(List<PhoneBookVO> phoneList, String keyword){
 		if (keyword.trim().length() > 0) {
 			for(int i =0 ; i<phoneList.size() ; i++){
@@ -133,6 +134,15 @@ public class PhoeneView {
 			System.out.println("검색 결과가 없습니다.");
 		}
 	}
+	***/
+	public void showSearchResult(List<PhoneBookVO> phoneList) {
+		if (phoneList.size()>0) {
+			showList(phoneList);
+		} else {
+			System.out.println("검색 결과가 없습니다.");
+		}
+	}
+
 	
 	//	메뉴번호를 잘못 입력시 안내문구를 출력하는 메소드
 	public void showEtc(){
@@ -148,6 +158,8 @@ public class PhoeneView {
 		System.out.println("******************************************");
 		
 	}
+	
+
 }
 
 
