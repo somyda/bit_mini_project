@@ -60,7 +60,7 @@ public class PhoneRepository {
 	private void saveInfo(List<PhoneVO> list){
 		
 		try {
-			//Writer fr = new FileWriter("phoneDB.txt");
+			//	Writer fr = new FileWriter("phoneDB.txt");
 			Writer fr = new FileWriter(phoneDB);
 			BufferedWriter bw = new BufferedWriter(fr);
 			

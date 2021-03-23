@@ -46,3 +46,4 @@ public class PhoneVO {
 		return "PhoneInfo [name=" + name + ", hp=" + hp + ", tel=" + tel + "]";
 	}
 }
+
